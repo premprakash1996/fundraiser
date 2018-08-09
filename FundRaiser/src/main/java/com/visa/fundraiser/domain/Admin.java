@@ -25,6 +25,13 @@ public class Admin {
 	
 	String status;
 
+	
+	
+	public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Admin(int id, String name, String emailid, String password, Date date, String status) {
 		super();
 		this.id = id;
