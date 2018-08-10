@@ -8,6 +8,20 @@
 <title>success</title>
 </head>
 <body>
+<%
+//allow access only if session exists
+if(session.getAttribute("email") == null){
+	response.sendRedirect("adminlogin.jsp");
+}
+String cookie = null;
+String sessionID = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie c : cookies){
+	if(c.getName().equals("user")) cookie = c.getValue();
+}
+}
+%>
 Success
 <a href="loggedin.jsp">go to home page</a>
 </body>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add an admin</title>
+<title>Edit and admin</title>
 
 </head>
 <body>
@@ -24,16 +24,18 @@ for(Cookie c : cookies){
 }
 %>
 <div class="container">
-  <form action="addadmin">
+  <form action="../updateadmin">
+
+	<input type="hidden" name="id" value="${a.id}">
 
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Your name..">
+    <input type="text" id="name" name="name" value="${a.name}">
 
     <label for="emailid">Emailid</label>
-    <input type="text" id="emailid" name="emailid" placeholder="Your emailid..">
-
-	<label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Your password..">
+    <input type="text" id="emailid" name="emailid" value="${a.emailid}">
+    
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" value="${a.password}">
     
     <label for="status">Status</label>
     <select id="status" name="status">
@@ -41,7 +43,7 @@ for(Cookie c : cookies){
       <option value="inactive">inactive</option>
     </select>
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="update">
 
   </form>
 </div>

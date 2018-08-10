@@ -2,6 +2,7 @@ package com.visa.fundraiser.domain;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -15,14 +16,18 @@ public class Admin {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	
+	@Column(nullable=false)
 	String name;
 	
+	@Column(nullable=false)
 	String emailid;
 	
+	@Column(nullable=false)
 	String password;
 	
 	Date date;
 	
+	@Column(nullable=false)
 	String status;
 
 	

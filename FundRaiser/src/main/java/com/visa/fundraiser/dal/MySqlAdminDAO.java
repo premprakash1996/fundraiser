@@ -38,6 +38,28 @@ public class MySqlAdminDAO implements AdminDAO {
 		return a;
 	}
 	
+	public boolean validateLogin(String email, String pass) {
+		Query q= em.createQuery("select a from Admin a where a.emailid like :email")
+				.setParameter("email", email);		
+		Admin a;
+		
+		try {
+		a=(Admin) q.getSingleResult();
+		}
+		catch(Exception e) {
+			return false;
+		}
+		//System.out.println("[From within validate login, database = "+a.getPassword()+" and passwd value is "+pass);
+
+		if(a.getPassword().equals(pass)) {
+			System.out.println("Went through true");
+
+			return true;
+		}
+		else
+		return false; 
+	}
+	
 	@Override
 	public List<Admin> findAll(){
 		
@@ -46,13 +68,19 @@ public class MySqlAdminDAO implements AdminDAO {
 		return all;
 	}
 	
+	@Override
+	public Admin findOne(int id) {
+		Admin a = em.find(Admin.class, id);		
+		return a;
+		
+	}
 	/* (non-Javadoc)
 	 * @see com.visa.fundraiser.dal.AdminDAO#updateAdmin(com.visa.fundraiser.domain.Admin)
 	 */
 	@Override
 	public Admin updateAdmin(Admin a) {
-		em.merge(a);
-		return a;
+		Admin A= em.merge(a);
+		return A;
 	}
 	
 

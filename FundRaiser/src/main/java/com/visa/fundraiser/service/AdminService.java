@@ -21,8 +21,16 @@ public class AdminService {
 		System.out.println("[From within service. Get object of DAO]");
 	}
 	
+	public boolean validateLogin(String email, String pass) {
+		return dao.validateLogin(email, pass);
+	}
+	
 	public Admin addNew(Admin a) {
 		return dao.addNew(a);
+	}
+	
+	public Admin findOne(int id) {
+		return dao.findOne(id);
 	}
 	
 	public List<Admin> findAll(){
@@ -32,5 +40,7 @@ public class AdminService {
 	public Admin updateAdmin(Admin a) {
 		return dao.updateAdmin(a);
 	}
+	
+	
 	
 }

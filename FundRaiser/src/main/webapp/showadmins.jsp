@@ -9,12 +9,27 @@
 <title> Admins list here</title>
 </head>
 <body>
+<%
+//allow access only if session exists
+if(session.getAttribute("email") == null){
+	response.sendRedirect("adminlogin.jsp");
+}
+String cookie = null;
+String sessionID = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie c : cookies){
+	if(c.getName().equals("user")) cookie = c.getValue();
+}
+}
+%>
 <H3> List of all Admins</H3>
 <table>
 <tr> <th>ID</th> <th>Name </th>  <th> email id </th> <th> date </th> <th> status </th></tr>
 <c:forEach items="${admins}" var="a">
 
-<tr> <td> ${a.id} </td> <td> ${a.name}</td> <td> ${a.emailid}</td> <td> ${a.date} </td> <td>${a.status}</td></tr>
+<tr> <td> ${a.id} </td> <td> ${a.name}</td> <td> ${a.emailid}</td> <td> ${a.date} </td> 
+<td>${a.status}</td> <td><a href="editadmincontroller/${a.id}">edit</a></td></tr>
 
 </c:forEach>
 </table>
